@@ -32,6 +32,18 @@ public:
         strcpy_s(this->type, sizeType + 1, other.type);
         strcpy_s(this->name, sizeName + 1, other.name);
     }
+    Overcoat(Overcoat&& moved) {
+        type = moved.type;
+        moved.type = nullptr;
+        sizeType = moved.sizeType;
+        name = moved.name;
+        moved.name = nullptr;
+        sizeName = moved.sizeName;
+        price = moved.price;
+        moved.sizeType = 0;
+        moved.sizeName = 0;
+        moved.price = 0;
+    }
 
     Overcoat& operator=(const Overcoat& other) {
         if (this == &other)
